@@ -24,26 +24,27 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav" style="text-align:right; float:right; font-weight:900">
-      
+      <%- if current_user.nil? %>
     
-      <li><a href="#">INGRESAR</a>
-      <li><a href="#">REGISTRARSE</a> 
+      <li><%= link_to "REGISTRARSE", new_user_registration_path %>
+      <li><%= link_to "INGRESAR", new_user_session_path %>
+        <li>
+      
 
-      </li>
+
+    <%- else %>
+        <li><%= link_to "SALIR", destroy_user_session_path,:method=>:delete %></li>
+    <%- end %>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
-
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
 <%= yield %>
 
 <style type="text/css">   
 
-.body {
-  background: #333
-  co:;
-}
 
 
-}
 </body>
 </html>
